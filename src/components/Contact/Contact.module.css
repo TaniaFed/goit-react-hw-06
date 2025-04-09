@@ -1,0 +1,38 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    border: 3px, solid, gray;
+    border-radius: 4px;
+    width: 300px;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+}
+
+.nameBox,
+.numberBox {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin: auto; */
+    height: 45px;
+}
+
+.name,
+.number {
+
+    font-size: 18px;
+    margin: 5px;
+}
