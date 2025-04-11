@@ -1,11 +1,10 @@
 const formatPhoneNumber = (value) => {
-  const cleaned = value.replace(/\D/g, "");
+  const cleaned = value.replace(/\D/g, "").slice(0, 7);
 
-  const match = cleaned.match(/^(\d{3})(\d{2})(\d{2})$/);
-  if (match) {
-    return `${match[1]}-${match[2]}-${match[3]}`;
-  }
-  return value;
+  if (cleaned.length <= 3) return cleaned;
+  if (cleaned.length <= 5)
+    return `${cleaned.slice(0, 3)}-${cleaned.slice(3)}`;
+  return `${cleaned.slice(0, 3)}-${cleaned.slice(3, 5)}-${cleaned.slice(5)}`;
 }
 
 const formatName = (name) => {

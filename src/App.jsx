@@ -5,8 +5,6 @@ import ContactForm from './components/ContactForm/ContactForm'
 import ContactList from './components/ContactList/ContactList'
 import SearchBox from './components/SearchBox/SearchBox'
 
-import * as Yup from 'yup'
-
 export default function App() {
   const [contacts, setContacts] = useState(() => {
     const savedContacts = localStorage.getItem('contacts')
@@ -25,25 +23,6 @@ export default function App() {
     })
   }
 
-  const initialValues = {
-    id: '',
-    name: '',
-    number: '',
-  }
-
-  const FeedbackSchema = Yup.object().shape({
-    name: Yup.string()
-      .min(3, 'Enter full Name!')
-      .max(50, 'Name too long!')
-      .required('Required'),
-    number: Yup.string()
-      .matches(
-        /^\d{3}-\d{2}-\d{2}$/,
-        'Phone number must be in xxx-xx-xx format!'
-      )
-      .required('Required'),
-  })
-
   const deleteContact = (contactId) => {
     setContacts((prevContacts) => {
       return prevContacts.filter((contact) => contact.id !== contactId)
@@ -57,11 +36,7 @@ export default function App() {
   return (
     <div>
       <h1 className="title">Phonebook</h1>
-      <ContactForm
-        onAdd={addContact}
-        initialValues={initialValues}
-        FeedbackSchema={FeedbackSchema}
-      />
+      <ContactForm onAdd={addContact} />
       <SearchBox value={filter} onSearch={setFilter} />
       <ContactList contacts={filteredContacts} onDelete={deleteContact} />
     </div>
